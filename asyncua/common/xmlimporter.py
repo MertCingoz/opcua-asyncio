@@ -388,11 +388,11 @@ class XmlImporter:
         )
         return node
 
-    def _to_migrated_nodeid(self, nodeid: ua.NodeId | None | str) -> ua.NodeId | ua.QualifiedName:
+    def _to_migrated_nodeid(self, nodeid: ua.NodeId | str | None) -> ua.NodeId | ua.QualifiedName:
         nodeid = self._to_nodeid(nodeid)
         return self._migrate_ns(nodeid)
 
-    def _to_nodeid(self, nodeid: ua.NodeId | None | str) -> ua.NodeId:
+    def _to_nodeid(self, nodeid: ua.NodeId | str | None) -> ua.NodeId:
         if isinstance(nodeid, ua.NodeId):
             return nodeid
         if not nodeid:
